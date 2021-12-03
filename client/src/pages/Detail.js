@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
-
+import { useSelector, useDispatch } from 'react-redux'
 import Cart from '../components/Cart';
 
 import {
@@ -15,10 +15,10 @@ import { idbPromise } from '../utils/helpers';
 import spinner from '../assets/spinner.gif';
 
 function Detail() {
-  // const [state, dispatch] = useStoreContext();
+  const dispatch = useDispatch()
   const { id } = useParams();
 
-  // const [currentProduct, setCurrentProduct] = useState({});
+  const state = useSelector((state) => state);
 
   const { loading, data } = useQuery(QUERY_PRODUCTS);
 
